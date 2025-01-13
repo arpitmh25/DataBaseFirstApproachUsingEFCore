@@ -1,0 +1,114 @@
+﻿@model IEnumerable<DataBaseFirstEFCore.Models.Student>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+@if (TempData["Create"] != null) { <div class="alert alert-success"> @TempData["Create"] </div> } 
+@if (TempData["Update"] != null) { <div class="alert alert-success"> @TempData["Update"] </div> } 
+@if (TempData["Delete"] != null) { <div class="alert alert-success"> @TempData["Delete"] </div> }
+
+<p>
+    <a asp-action="Create" class="btn-create">Create New</a>
+</p>
+
+@{
+
+}
+
+<style>
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+        .table th, .table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .table th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .table tr:nth-child(odd) {
+            background-color: #e9f7ef;
+        }
+
+        .table tr:hover {
+            background-color: #d5f5e3;
+        }
+
+        .table a {
+            color: #ff5722;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+            .table a:hover {
+                text-decoration: underline;
+            }
+
+    .btn-create {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+
+        .btn-create:hover {
+            background-color: #45a049;
+        }
+</style>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentGender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Standard)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentGender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Age)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Standard)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
